@@ -9,7 +9,7 @@ const router = Router();
 // Temporada
 router.post('/', async(req, res) => {
     const { nombre, dificultad,duracion, temporada, paises} = req.body;
-    console.log( nombre, dificultad, duracion, temporada,'?',paises)
+    // console.log( nombre, dificultad, duracion, temporada,'?',paises)
     try {
         const nuevaAct = await Activity.create({ nombre, dificultad, duracion, temporada })
 
@@ -18,9 +18,9 @@ router.post('/', async(req, res) => {
                 where : { id : paises },
                 // attributes: ['nombre']
             })
-            console.log('linea 21', pais)
+            // console.log('linea 21', pais)
             await nuevaAct.addCountry(pais)
-            console.log('?')
+            // console.log('?')
             return res.send(`${nuevaAct.nombre} se creo la conexión con ${pais.nombre}`)
         } else {
             paises.forEach(async(paisId) => {
@@ -30,7 +30,7 @@ router.post('/', async(req, res) => {
             return res.send(`${nuevaAct.nombre} se creo la conexión con ${paises}`)
         }
     } catch (err) {
-        console.log(err)
+        // console.log(err)
         res.sendStatus(400)
     }
     // const { nombre, dificultad, duracion, temporada, pais } = req.body;
