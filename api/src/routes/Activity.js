@@ -9,28 +9,29 @@ const router = Router();
 // Temporada
 router.post('/', async(req, res) => {
     const { nombre, dificultad,duracion, temporada, paises} = req.body;
-    // console.log( nombre, dificultad, duracion, temporada,'?',paises)
+    console.log( nombre, dificultad, duracion, temporada,'?',paises,'post activity??')
     try {
         const nuevaAct = await Activity.create({ nombre, dificultad, duracion, temporada })
 
         if (!Array.isArray(paises)) {
             const pais = await Country.findOne({
-                where : { id : paises },
-                // attributes: ['nombre']
+                where : { nombre : paises }
             })
-            // console.log('linea 21', pais)
+            console.log('linea 21', pais)
             await nuevaAct.addCountry(pais)
-            // console.log('?')
-            return res.send(`${nuevaAct.nombre} se creo la conexión con ${pais.nombre}`)
+            console.log('?')
+            return res.send('Se creo correctamente soy activity back')
         } else {
-            paises.forEach(async(paisId) => {
-                const pais = await Country.findByPk(paisId)
+            paises.forEach(async(paiss) => {
+                const pais = await Country.findAll({
+                    where : { nombre : paiss }
+                })
                 await nuevaAct.addCountry(pais)
             })
-            return res.send(`${nuevaAct.nombre} se creo la conexión con ${paises}`)
+            return res.send('Se creo correctamente!soy activity back')
         }
     } catch (err) {
-        // console.log(err)
+        console.log('¡¿',err,'?')
         res.sendStatus(400)
     }
     // const { nombre, dificultad, duracion, temporada, pais } = req.body;

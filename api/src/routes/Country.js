@@ -14,10 +14,11 @@ router.get('/', async (req, res) => {
     let offSet = req.query.offset;
     // console.log('offset',offSet,'?')
     let tipoOrden;
-    // console.log('queryNombre', nombree, 'order', orden)
+    console.log('queryNombre', nombree, 'order', orden)
     orden === undefined || orden === 'ASC' ? orden = 'ASC' : orden = orden;
     !tipo || tipo === 'nombre' ? tipoOrden = [['nombre' ,orden]] :  tipoOrden = [['poblacion', orden.toUpperCase()]]
-    // console.log('tipoOrden', tipoOrden )
+    // !offSet ? offSet = 0 : offSet = offSet;
+    console.log('offSet??',offSet , 'order', orden, 'tipo? ', tipoOrden)// [[tipo, orden]]
     if (!nombree ) {
         // orden = 'ASC'
         try {
@@ -39,26 +40,16 @@ router.get('/', async (req, res) => {
                 })
             })
             let pais = await Country.findAll({
-                attributes: ['id','nombre', 'imagen', 'continente', 'poblacion'],
+                // attributes: ['id','nombre', 'imagen', 'continente', 'poblacion'],
                 order: tipoOrden,
                 include: Activity,
                 offset: offSet,
-                limit:10
+                limit:12
 
             })
-            // console.log('pais????', pais[0].dataValues.nombre, '??')
-            // console.log('pais????', pais[1].dataValues.nombre, '??')
-            // console.log('pais????', pais[2].dataValues.nombre, '??')
-            // console.log('pais????', pais[3].dataValues.nombre, '??')
-            // console.log('pais????', pais[4].dataValues.nombre, '??')
-            // console.log('pais????', pais[5].dataValues.nombre, '??')
-            // console.log('pais????', pais[6].dataValues.nombre, '??')
-            // console.log('pais????', pais[7].dataValues.nombre, '??')
-            // console.log('pais????', pais[8].dataValues.nombre, '??')
-            // console.log('pais????', pais[9].dataValues.nombre, '??')
-            // console.log('??????????')
             return res.status(200).send(pais)
         } catch (error) {
+            console.log('error ', error)
             return res.status(400).send('hubo un error')
         }
     } else if (nombree) {
@@ -77,7 +68,7 @@ router.get('/', async (req, res) => {
                 },
                 include: Activity,
                 // where: { nombre: NOMBRE },//req.query
-                order: tipoOrden, //[['nombre', orden]],
+                // order: tipoOrden, //[['nombre', orden]],
                 attributes: ['id','nombre', 'imagen', 'continente'],
             })
             // console.log(resultadoDb, 'db?')
@@ -134,6 +125,5 @@ router.get('/:id', async (req, res) => {
     // console.log(paises,'?')
     res.status(200).send(paises)
 })
-
 
 module.exports = router;

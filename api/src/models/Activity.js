@@ -14,17 +14,13 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
     },
     dificultad:{
-        type: DataTypes.ENUM({
-        values: ['1','2','3','4','5'] // verificamos que sea del 1 al 5
-    })
+        type: DataTypes.STRING
     },
     duracion:{
         type: DataTypes.STRING //verificar despues
     },
     temporada:{
-        type: DataTypes.ENUM({
-            values: ['verano', 'otoño', 'invierno', 'primavera']
-        })
+        type: DataTypes.STRING
     }
   });
 };

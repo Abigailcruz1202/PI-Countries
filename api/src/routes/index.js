@@ -3,6 +3,7 @@ const { Router } = require('express');
 // Ejemplo: const authRouter = require('./auth.js');
 const country = require('./Country.js')
 const activity = require('./Activity.js');
+const todo = require('./GetAll')
 
 
 const router = Router();
@@ -12,6 +13,7 @@ const router = Router();
 
 router.use('/countries', country)
 router.use('/activity', activity)
+router.use('/todo', todo)
 
  
 module.exports = router;
