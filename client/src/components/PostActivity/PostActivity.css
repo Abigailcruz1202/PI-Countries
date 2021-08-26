@@ -1,0 +1,46 @@
+.fondoPost{
+    background-image: url(../../img/WhatsApp\ Image\ 2021-08-24\ at\ 18.11.16.jpeg);
+    background-image: url(https://thumbs.dreamstime.com/b/juego-de-iconos-la-l%C3%ADnea-color-para-deportes-extremos-actividades-consideradas-alto-riesgo-pictograma-p%C3%A1gina-web-aplicaci%C3%B3n-166413592.jpg);
+    background-repeat:round;
+    height: 600px;
+    /* background-repeat:no-repeat; */
+    background-size:initial;
+    /* background-image: url(https://th.bing.com/th/id/R.86648bbdd7bb82381bdbb9ed5582f89b?rik=WkgyY%2bEwQsURGA&riu=http%3a%2f%2fmedia.gettyimages.com%2fvectors%2fseamless-vector-background-travel-vector-id480931343%3fs%3d170667a%26w%3d1007&ehk=TWopFLGsqAH2089QfS6lZ0XLBS9EN0%2fTrLMmMYWjscw%3d&risl=&pid=ImgRaw&r=0); */
+
+}
+.divForm{
+    background-color: #bbecf161;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border: solid 1px;
+    /* width: 50%; */
+    height: 70%;
+    position: relative;
+    /* left: 25%; */
+    bottom: 4%;
+}
+.h1Actividad{
+    background-color: white;
+    height: 78px;
+    position: relative;
+    bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: unset;
+}
+.labels{
+    width: 50%;
+    display: flex;
+    justify-content: space-evenly;
+    font-weight: bold;
+    
+}
+.labelsTemporada{
+    font-weight: bold;
+}
+.inputs{
+    border-style: groove;
+}

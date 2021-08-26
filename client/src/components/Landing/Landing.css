@@ -1,0 +1,15 @@
+.fondo{
+    background-image: url(../../img/landinggg.jpg.jpeg);
+    background-repeat:round;
+    display: flex;
+    height: 657px;
+}
+.titulo{
+    font-style: italic;
+    font-family: -webkit-body;
+    font-size: 65px;
+    font-weight: unset;
+    position: relative;
+    top: 33px;
+    cursor: default;
+}

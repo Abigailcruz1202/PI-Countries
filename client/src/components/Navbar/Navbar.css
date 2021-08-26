@@ -1,0 +1,10 @@
+.lista{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    list-style: none;
+}
+.estilo{
+    text-decoration: none;
+    color: whitesmoke;
+}
