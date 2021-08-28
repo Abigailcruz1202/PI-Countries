@@ -20,7 +20,7 @@ router.post('/', async(req, res) => {
             console.log('linea 21', pais)
             await nuevaAct.addCountry(pais)
             console.log('?')
-            return res.send('Se creo correctamente soy activity back')
+            return res.send(nuevaAct)
         } else {
             paises.forEach(async(paiss) => {
                 const pais = await Country.findAll({
@@ -28,26 +28,33 @@ router.post('/', async(req, res) => {
                 })
                 await nuevaAct.addCountry(pais)
             })
-            return res.send('Se creo correctamente!soy activity back')
+            return res.send(nuevaAct)
         }
     } catch (err) {
         console.log('¡¿',err,'?')
         res.sendStatus(400)
     }
-    // const { nombre, dificultad, duracion, temporada, pais } = req.body;
-    // console.log( nombre, dificultad, duracion, temporada,'?',pais)
-    // // try {
-    //     let nuevaAct = await Activity.create({
-    //         nombre, dificultad, duracion, temporada
-    //     })
-    //     // let actividad = 
-    //      nuevaAct.setPaiss(pais)
-    //     // console.log('¿',actividad,'?')
-    //     return res.status(200).send(nuevaAct)
-    // // }
-    // // catch (error) {
-    // //     console.log('e',error,'?')
-    // //     res.sendStatus(400)
-    // // }
 })
+// const { nombre, dificultad, duracion, temporada, pais } = req.body;
+// console.log( nombre, dificultad, duracion, temporada,'?',pais)
+// // try {
+//     let nuevaAct = await Activity.create({
+//         nombre, dificultad, duracion, temporada
+//     })
+//     // let actividad = 
+//      nuevaAct.setPaiss(pais)
+//     // console.log('¿',actividad,'?')
+//     return res.status(200).send(nuevaAct)
+// // }
+// // catch (error) {
+// //     console.log('e',error,'?')
+// //     res.sendStatus(400)
+// // }
+
+router.get('/todas', async(req,res)=>{
+    let actividades = await Activity.findAll()
+    console.log('estoy en get actividades',actividades)
+    res.send(actividades)
+})
+
 module.exports = router;

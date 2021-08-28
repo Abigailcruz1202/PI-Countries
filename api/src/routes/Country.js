@@ -68,7 +68,7 @@ router.get('/', async (req, res) => {
                 },
                 include: Activity,
                 // where: { nombre: NOMBRE },//req.query
-                // order: tipoOrden, //[['nombre', orden]],
+                order: tipoOrden, //[['nombre', orden]],
                 attributes: ['id','nombre', 'imagen', 'continente'],
             })
             // console.log(resultadoDb, 'db?')
