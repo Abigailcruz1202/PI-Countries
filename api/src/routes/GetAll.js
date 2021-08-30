@@ -9,6 +9,7 @@ const router = Router();
 router.get('/', async (req, res) => {
     console.log('estoy en /todo')
     let pais = await Country.findAll({
+        order:[['nombre','ASC']],
         include: [Activity]
     })
     console.log('??',pais.length,'?')

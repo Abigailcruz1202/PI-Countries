@@ -53,7 +53,7 @@ router.post('/', async(req, res) => {
 
 router.get('/todas', async(req,res)=>{
     let actividades = await Activity.findAll()
-    console.log('estoy en get actividades',actividades)
+    // console.log('estoy en get actividades',actividades)
     res.send(actividades)
 })
 

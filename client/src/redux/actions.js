@@ -7,6 +7,7 @@ export const FILTER_CONTINENT = 'FILTER_CONTINENT';
 export const FILTER_ACTIVITY = 'FILTER_ACTIVITY';
 export const GET_ALL = 'GET_ALL'
 export const GET_ACTIVITIES = 'GET_ACTIVITIES'
+export const CAMBIOS = 'CAMBIOS'
 //react select
 let URL_COUNTRIES = 'http://localhost:3001/countries'
 let URL_ACTIVITY = 'http://localhost:3001/activity'
@@ -76,9 +77,12 @@ export function getCountries(tipoOrden, order, offSet) {
     }
 }
 
-export function getByNames(nombre) {
+export function getByNames(nombre,offSet) {
+    offSet === undefined ? offSet = 0 : offSet = offSet;
+    console.log('nombre???????????',nombre)
+    console.log('offset',offSet)
     return function (dispatch) {
-        return fetch(`${URL_COUNTRIES}?name=${nombre}`)
+        return fetch(`${URL_COUNTRIES}?name=${nombre}&offset=${offSet}`)
             .then(res => res.json())
             .then(json => {
                 // console.log('estoy en action getbynames', json)
@@ -136,7 +140,7 @@ export function postActivity(actividad){
 
 export function todo(){
     return function (dispatch) {
-        console.log('todo action')
+        // console.log('todo action')
         return fetch(`http://localhost:3001/todo`)
             .then(res => res.json())
             .then(json => {
@@ -149,22 +153,36 @@ export function todo(){
     }
 }
 
-export function filtrarContinente(continente){
-    console.log('action filter continent',continente,'???')
-    return {
-        type: FILTER_CONTINENT,
-        payload: continente
-    }
-}
 export function todasActividades(){
     return function (dispatch){
     return fetch('http://localhost:3001/activity/todas')
     .then(res => res.json())
     .then(json =>{
+        // console.log(json)
         dispatch({
             type: GET_ACTIVITIES,
             payload: json
         })
     })
 }
+}
+export function filtrarContinente(continente){
+    // console.log('action filter continent',continente,'???')
+    return {
+        type: FILTER_CONTINENT,
+        payload: continente
+    }
+}
+export function cambiosBusqueda(cambios){
+    console.log('action CAMBIOS',cambios,'???')
+    return {
+        type: CAMBIOS,
+        payload: cambios
+    }
+}
+export function filtrarActividad(nombreAct){
+    return{
+        type: FILTER_ACTIVITY,
+        payload: nombreAct
+    }
 }

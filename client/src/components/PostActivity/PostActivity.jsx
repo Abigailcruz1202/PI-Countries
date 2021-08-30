@@ -139,7 +139,7 @@ export function Form(props) {// nombre, dificultad,duracion, temporada, paises
                             <option >Paises seleccionados</option>
                             {paises.map((p) => {
                                 return <>
-                                    <option key={p.id} value={p}> {p} </option>
+                                    <option key={p.id} value={p}> {p + '.... X'}</option>
                                 </>
                             })}
                         </select>

@@ -1,0 +1,44 @@
+.fondo-Act{
+    background-image: url(https://www.lifeder.com/wp-content/uploads/2017/10/tipos-de-turismo-lifeder-1.jpg);
+    background-repeat: space;
+}
+.contenedor-act{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: solid 1px;
+    background: #f5f5f573;
+    /* width: 100%; */
+}
+.act{
+    display: flex;
+    width: 80%;
+    height: 125px;
+    justify-content: space-around;
+    align-items: center;
+}
+.paises-act{
+    display: flex;
+    flex-wrap: wrap;
+    height: 413px;
+    width: 100%;
+    align-items: flex-start;
+    align-content: flex-start;
+    /* justify-content: space-evenly; */
+}
+.paiss-act{
+    /* background-color: violet; */
+    display: flex;
+    justify-content: space-evenly;
+}
+.divsPaises{
+    width: 20%;
+    height: 15%;
+}
+.links{
+    color: black;
+}
+.contenedor{
+    height: 412px;
+    width: 80%;
+}

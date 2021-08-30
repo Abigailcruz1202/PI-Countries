@@ -1,11 +1,12 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { connect,useSelector } from 'react-redux';
 import { getByNames } from '../../redux/actions';
 import { NavLink } from "react-router-dom";
+import { cambiosBusqueda } from '../../redux/actions';
 
 
 export function SearchBar(props){
-    console.log('props Search',props)
+    // console.log('props Search',props)
     const [input, setInput] = React.useState({
         nombres:''
     })
@@ -19,6 +20,7 @@ export function SearchBar(props){
         e.preventDefault()
         props.getByNames(input.nombres)
         setInput({nombres:''})
+        props.cambiosBus('nombre')
 
     }
     console.log(input,'input buscador ')
@@ -38,7 +40,8 @@ function mapStateToProps(state){
 }
 function mapDispatchToProps(dispatch){
     return {
-        getByNames: (nombre) => dispatch(getByNames(nombre))
+        getByNames: (nombre) => dispatch(getByNames(nombre)),
+        cambiosBus: (cambio) => dispatch(cambiosBusqueda(cambio))
     }
 }
 

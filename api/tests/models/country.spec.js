@@ -1,4 +1,4 @@
-const { Country, conn } = require('../../src/db.js');
+const { Country, conn,Activity } = require('../../src/db.js');
 const { expect } = require('chai');
 
 describe('Country model', () => {
@@ -20,3 +20,19 @@ describe('Country model', () => {
     });
   });
 });
+describe('Activity model', () => {
+  describe('Validators', () => {
+    beforeEach(() => Activity.sync({ force: true }));
+    describe('name', () => {
+      it('debería arrojar un error si dificultad es una cadena', (done) => {
+        Activity.create({dificultad:"12 minutes"})
+          .then(() => done(new Error(' Requiere una dificultad válida')))
+          .catch(() => done());
+      });
+      it('debería funcionar cuando es un tipo válido', () => {
+        Activity.create({ dificultad: 30 });
+      });
+    });
+  });
+});
+

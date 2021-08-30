@@ -12,13 +12,13 @@ router.get('/', async (req, res) => {
     let orden = req.query.order; // 'ASC' || 'DESC'
     let tipo = req.query.tipo; //nombre || poblacion
     let offSet = req.query.offset;
-    // console.log('offset',offSet,'?')
+    console.log('offset',offSet,'?')
     let tipoOrden;
     console.log('queryNombre', nombree, 'order', orden)
     orden === undefined || orden === 'ASC' ? orden = 'ASC' : orden = orden;
     !tipo || tipo === 'nombre' ? tipoOrden = [['nombre' ,orden]] :  tipoOrden = [['poblacion', orden.toUpperCase()]]
     // !offSet ? offSet = 0 : offSet = offSet;
-    console.log('offSet??',offSet , 'order', orden, 'tipo? ', tipoOrden)// [[tipo, orden]]
+    // console.log('offSet??',offSet , 'order', orden, 'tipo? ', tipoOrden)// [[tipo, orden]]
     if (!nombree ) {
         // orden = 'ASC'
         try {
@@ -68,11 +68,13 @@ router.get('/', async (req, res) => {
                 },
                 include: Activity,
                 // where: { nombre: NOMBRE },//req.query
-                order: tipoOrden, //[['nombre', orden]],
+                order: [['nombre','ASC']], //[['nombre', orden]],
+                offset: offSet,
+                limit:12,
                 attributes: ['id','nombre', 'imagen', 'continente'],
             })
             // console.log(resultadoDb, 'db?')
-            return res.send(resultadoDb)
+            return res.status(200).send(resultadoDb)
         }
         catch (error) {
             // console.log('e', error ,'????')

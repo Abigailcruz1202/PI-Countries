@@ -22,7 +22,7 @@ export default function NavBar(){
                         <NavLink className='estilo' to='/agregar-actividad'>Nueva Actividad</NavLink>
                     </li>
                     <li>
-                        <NavLink className='estilo' to='/prueba'>Prueba</NavLink>
+                        <NavLink className='estilo' to='/actividades-todas'>Actividades</NavLink>
                     </li>
                     <li>
                         <SearchBar />

@@ -1,13 +1,13 @@
-import { GET_COUNTRIES, GET_BY_NAMES, GET_BY_ID, POST_ACTIVITY, FILTER_CONTINENT , GET_ALL, GET_ACTIVITIES} from './actions';
+import { GET_COUNTRIES, GET_BY_NAMES, GET_BY_ID, POST_ACTIVITY, FILTER_CONTINENT , GET_ALL, GET_ACTIVITIES, CAMBIOS, FILTER_ACTIVITY} from './actions';
 
 const initialState = {
     paises: [],
-    nombres: [],
     detalle: [],
     actividades: [],
     todo:[],
     continentes:[],
-    todasActividades:[]
+    todasActividades:[],
+    cambiosBus:''
 };
 
 function rootReducer(state = initialState, action) {
@@ -20,7 +20,7 @@ function rootReducer(state = initialState, action) {
         case GET_BY_NAMES:
             return {
                 ...state,
-                nombres: action.payload
+                paises: action.payload
             };
         case GET_BY_ID:
             return {
@@ -38,6 +38,11 @@ function rootReducer(state = initialState, action) {
                 ...state,
                 continentes:  state.todo.filter((pais)=> pais.continente === action.payload)
             }
+            case FILTER_ACTIVITY:
+                return{
+                    ...state,
+                    actividades: state.todo.filter((pais)=> pais.activities.find((act) => act.nombre === action.payload))
+                }
         case GET_ALL:
             return{
                 ...state,
@@ -46,11 +51,16 @@ function rootReducer(state = initialState, action) {
         case GET_ACTIVITIES:
             return {
                 ...state,
-                todasActividades: state.todasActividades.concat(action.payload)
+                todasActividades: action.payload
+            }
+        case CAMBIOS:
+            return{
+                ...state,
+                cambiosBus: action.payload
             }
         default:
             return state;
     }
 }
-console.log('state redur: ' ,initialState)
+// console.log('state redur: ' ,initialState)
 export default rootReducer;

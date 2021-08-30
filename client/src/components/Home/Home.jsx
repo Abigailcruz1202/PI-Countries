@@ -10,8 +10,6 @@ import './Home.css'
 
 function Home(props) {
     // console.log(props)
-    const nombresPaises = props.nombre;
-    console.log('?', nombresPaises)
     
     return (
         <div >
@@ -24,7 +22,6 @@ function Home(props) {
 function mapStateToProps(state) {
     return {
         paises: state.paises,
-        nombre: state.nombres
     }
 }
 
