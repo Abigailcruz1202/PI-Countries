@@ -48,7 +48,6 @@ export function Act(props) {
                         </div>
                         <h3>Paises</h3>
                         <div className='contenedor'>
-                            {/* <ul> */}
                             {filtrado ?
                                 filtrado.length > 5 ?
                                     <div className='paises-act'>
@@ -56,7 +55,6 @@ export function Act(props) {
                                             return <div className='divsPaises' key={p.id}>
                                                 <Link className='links' to={`/detalle/${p.id}`}><h4>•{p.nombre}</h4></Link>
                                             </div>
-                                            // <li key={p.id}>{p.nombre}</li>
                                         })}
                                     </div>
                                     : <div className='paiss-act'>
@@ -64,11 +62,9 @@ export function Act(props) {
                                             return <div className='divPaises' key={p.id}>
                                                 <Link className='links' to={`/detalle/${p.id}`}><h4>•{p.nombre}</h4></Link>
                                             </div>
-                                            // <li key={p.id}>{p.nombre}</li>
                                         })}
                                     </div>
                                 : console.log('no hay nada para mostrar')}
-                            {/* </ul> */}
                         </div>
                     </>
                     : null
@@ -78,29 +74,3 @@ export function Act(props) {
     )
 }
 export default connect(null, { todo, filtrarActividad, todasActividades })(Act)
-//  p.activities.map((a) => {
-    //     // console.log('a',a)
-    //     <div key={a.id} >
-    //         {console.log(a.nombre,'estoy en ultimo return',a)}
-    //         {a}
-    //         <h2>{a}</h2>
-//         <h5>dificultad: {a.dificultad}</h5>
-//         <h5>duracion: {a.duracion}</h5>
-//         <h5>temporada: {a.temporada}</h5>
-//     </div>
-// })
-
-// console.log(estadoTodo)
-// let filtrado = [];
-// let sinAct = []
-// let conAct = []
-// estadoTodo.forEach((p) => {
-    //     if (p.activities.length > 0) {
-        //         conAct.push(p)
-//         p.activities.filter((a) => a.nombre === params ? filtrado.push(p) : console.log('no'))
-//     } else {
-//         sinAct.push(p)
-//     }
-// })
-// // console.log(sinAct)
-// console.log('final', conAct); console.log('filtrado', filtrado)

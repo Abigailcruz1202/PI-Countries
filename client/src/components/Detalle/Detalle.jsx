@@ -4,7 +4,6 @@ import { getByID, todasActividades,filtrarActividad } from '../../redux/actions'
 import NavBar from '../Navbar/Navbar';
 import { Link } from 'react-router-dom';
 
-
 import './Detalle.css';
 
 export function Detalle(props) {
@@ -21,7 +20,6 @@ export function Detalle(props) {
     function redir(e){
         let params = e.target.value
         props.filtrarActividad(params)
-    //    setTimeout((e)=>window.location.href = `http://localhost:3000/actividades/${nombre}`,2000)
         window.location.href = `http://localhost:3000/actividades/${e.target.value}`
     }
 
@@ -33,7 +31,7 @@ export function Detalle(props) {
                     <h4 >Volver</h4>
                 </Link>
                 <div key={stateDetalle.id} className='detalle-pais'>
-                    <span><span style={{ fontWeight: 'bold' }}>ID: </span>{stateDetalle.id}</span>
+                    <span><span className='spanID'>ID: </span>{stateDetalle.id}</span>
                     <h1 className='margin'>{stateDetalle.nombre}</h1>
                     <h3 className='margin'>Capital: {stateDetalle.capital}</h3>
                     <img src={stateDetalle.imagen} width='300px' alt='bandera' />
@@ -54,13 +52,6 @@ export function Detalle(props) {
                             :<p>Sin actividades..</p>
                             }
                             </select>
-                            {/* <ul>
-                                {Array.isArray(stateDetalle.activities) && stateDetalle.activities.length >= 1 ? stateDetalle.activities.map((e) => {
-                                    return <Link to={`/actividades/${e.nombre}`}><li key={e.id}>{e.nombre}</li></Link>
-                                })
-                                    : <p>Sin actividades..</p>
-                                }
-                            </ul> */}
                         </div>
                     </div>
             </div>

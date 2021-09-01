@@ -1,0 +1,35 @@
+.paginadoTodo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.marginPaginadoTodo{
+    margin: 5px;
+}
+.ContenedorTodo{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.divPocosPaises{
+    height: 548px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.divPaisess{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.tarjetas{
+    width: 300px;
+    height: 260px;
+    margin: 5px;
+    border: solid 2px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color:' rgb(0 0 0 / 28%)' ;
+}
