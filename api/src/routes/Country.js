@@ -82,39 +82,6 @@ router.get('/', async (req, res) => {
         }
     }
 })
-// let db = await Country.findAll();
-// if (db.length === 0) {
-//     try {
-//         let datosApi = await axios.get(`https://restcountries.eu/rest/v2/all`)
-//         let respApi = datosApi.data;
-//         respApi.forEach((e) => {
-//             Country.create({
-//                 id: e.alpha3Code,
-//                 nombre: e.name,
-//                 imagen: e.flag,
-//                 continente: e.region,
-//                 capital: e.capital,
-//                 subregion: e.subregion,
-//                 area: e.area,
-//                 poblacion: e.population
-//             })
-//         })
-//         let pais = await Country.findAll({
-//             attributes: ['nombre', 'imagen', 'continente']
-//         })
-//         // console.log('pais????', pais, '??')
-//         return res.status(200).send(pais)
-//     }
-//     catch (error) {
-//         return res.status(400).send('hubo un error')
-//     }
-// }
-// let pais = await Country.findAll({
-//     attributes: ['nombre', 'imagen', 'continente'],
-//     limit: 10
-// })
-// // console.log('pais else', pais, '?')
-// res.status(200).send(pais) 27.657.145 27.478.000
 
 router.get('/:id', async (req, res) => {
     const { id } = req.params;

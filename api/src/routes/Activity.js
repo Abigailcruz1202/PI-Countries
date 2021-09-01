@@ -35,21 +35,6 @@ router.post('/', async(req, res) => {
         res.sendStatus(400)
     }
 })
-// const { nombre, dificultad, duracion, temporada, pais } = req.body;
-// console.log( nombre, dificultad, duracion, temporada,'?',pais)
-// // try {
-//     let nuevaAct = await Activity.create({
-//         nombre, dificultad, duracion, temporada
-//     })
-//     // let actividad = 
-//      nuevaAct.setPaiss(pais)
-//     // console.log('¿',actividad,'?')
-//     return res.status(200).send(nuevaAct)
-// // }
-// // catch (error) {
-// //     console.log('e',error,'?')
-// //     res.sendStatus(400)
-// // }
 
 router.get('/todas', async(req,res)=>{
     let actividades = await Activity.findAll()
