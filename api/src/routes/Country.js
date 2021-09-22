@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
     let orden = req.query.order; // 'ASC' || 'DESC'
     let tipo = req.query.tipo; //nombre || poblacion
     let offSet = req.query.offset;
-    console.log('offset',offSet,'?')
+    // console.log('offset',offSet,'?')
     let tipoOrden;
     console.log('queryNombre', nombree, 'order', orden)
     orden === undefined || orden === 'ASC' ? orden = 'ASC' : orden = orden;
@@ -69,16 +69,21 @@ router.get('/', async (req, res) => {
                 include: Activity,
                 // where: { nombre: NOMBRE },//req.query
                 order: [['nombre','ASC']], //[['nombre', orden]],
-                offset: offSet,
-                limit:12,
-                attributes: ['id','nombre', 'imagen', 'continente'],
+                // offset: offSet,
+                // limit:12,
+                attributes: ['id','nombre', 'imagen', 'continente','capital'],
             })
-            // console.log(resultadoDb, 'db?')
-            return res.status(200).send(resultadoDb)
+            console.log(resultadoDb.length, 'db?')
+            if(resultadoDb.length === 0){
+                return res.send(resultadoDb)
+            }else{
+                
+                return res.status(200).send(resultadoDb)
+            }
         }
         catch (error) {
             // console.log('e', error ,'????')
-            res.send('Lo siento hubo un error, puede que no se halla encontrado lo que busca')
+            res.status(400).send('Lo siento hubo un error, puede que no se halla encontrado lo que busca')
         }
     }
 })
